@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Dashboard Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="css/dashboard.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="index.html">SPEC CINT2006 Rates Results</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-3 col-md-2 sidebar">
+                <ul class="nav nav-sidebar">
+                    <li class="inactive" v-repeat="sponsors | filterBy searchSponsor">
+                        <a href="{{sponsor_nosp}}.html">{{sponsor}}</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+                <div id="app" class="table-responsive">
+                    <input type="search" class="form-control fixed" placeholder="Search..." v-model="searchText">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Test Sponsor</th>
+                                <th>System Name</th>
+                                <th>Base Copies</th>
+                                <th>Enabled Cores</th>
+                                <th>Enabled Chips</th>
+                                <th>Cores/Chip</th>
+                                <th>Threads/Core</th>
+                                <th>Result(Base)</th>
+                                <th>Result(Peak)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-repeat="systems | filterBy searchText">
+                                <td>{{test_sponsor}}</td>
+                                <td><a href="{{htmllink}}" target="_blank">{{hw_model}}</a></td>
+                                <td>{{base_copies}}</td>
+                                <td>{{hw_ncores}}</td>
+                                <td>{{hw_nchips}}</td>
+                                <td>{{hw_ncoresperchip}}</td>
+                                <td>{{hw_nthreadspercore}}</td>
+                                <td>{{basemean}}</td>
+                                <td>{{peakmean}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/vue.js"></script>

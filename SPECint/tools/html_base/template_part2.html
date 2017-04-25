@@ -1,0 +1,44 @@
+</ul>
+</div>
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+    <div id="app" class="table-responsive">
+        <input type="search" class="form-control fixed" placeholder="Search..." v-model="searchText">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Test Sponsor</th>
+                    <th>System Name</th>
+                    <th>Base Copies</th>
+                    <th>Enabled Cores</th>
+                    <th>Enabled Chips</th>
+                    <th>Cores/Chip</th>
+                    <th>Threads/Core</th>
+                    <th>Result(Base)</th>
+                    <th>Result(Peak)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-repeat="systems | filterBy searchText">
+                    <td>{{test_sponsor}}</td>
+                    <td><a href="{{htmllink}}" target="_blank">{{hw_model}}</a></td>
+                    <td>{{base_copies}}</td>
+                    <td>{{hw_ncores}}</td>
+                    <td>{{hw_nchips}}</td>
+                    <td>{{hw_ncoresperchip}}</td>
+                    <td>{{hw_nthreadspercore}}</td>
+                    <td>{{basemean}}</td>
+                    <td>{{peakmean}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>
+</div>
+
+<!-- Bootstrap core JavaScript
+    ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/vue.js"></script>

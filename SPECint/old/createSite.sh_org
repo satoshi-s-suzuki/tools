@@ -1,0 +1,68 @@
+#!/bin/sh
+
+if [ $# -ne 1 ]; then
+  echo
+  echo ""usage: $0 param1[ original html file ]
+  echo
+  exit 1
+fi
+
+IN=$1
+OUT="../js/app.js"
+
+echo "var vm = new Vue({"  > ${OUT}
+echo "  el: \"#app\","    >> ${OUT}
+echo "  data: {"          >> ${OUT}
+echo "    people: ["      >> ${OUT}
+
+awk -F '["<>]' 'BEGIN{ array["test_sponsor"]       = "";
+                       array["hw_model"]           = "";
+                       array["base_copies"]        = "";
+                       array["hw_ncores"]          = "";
+                       array["hw_nchips"]          = "";
+                       array["hw_ncoresperchip"]   = "";
+                       array["hw_nthreadspercore"] = "";
+                       array["basemean"]           = "";
+                       array["peakmean"]           = "";
+                       printflg = 1;
+                     }{ key   = $3;
+                        value = $5;
+                        if(key in array){
+                          array[key] = value
+                          if(key == "peakmean" && array["test_sponsor"] != ""){
+                            print "      {"
+                            print "        test_sponsor: \""array["test_sponsor"]"\","
+                            print "        hw_model: \""array["hw_model"]"\","
+                            print "        base_copies: \""array["base_copies"]"\","
+                            print "        hw_ncores: \""array["hw_ncores"]"\","
+                            print "        hw_nchips: \""array["hw_nchips"]"\","
+                            print "        hw_ncoresperchip: \""array["hw_ncoresperchip"]"\","
+                            print "        hw_nthreadspercore: \""array["hw_nthreadspercore"]"\","
+                            print "        basemean: \""array["basemean"]"\","
+                            print "        peakmean: \""array["peakmean"]"\""
+                            print "      },"
+			    array["test_sponsor"]       = "";
+			    array["hw_model"]           = "";
+			    array["base_copies"]        = "";
+			    array["hw_ncores"]          = "";
+			    array["hw_nchips"]          = "";
+			    array["hw_ncoresperchip"]   = "";
+			    array["hw_nthreadspercore"] = "";
+			    array["basemean"]           = "";
+			    array["peakmean"]           = "";
+                          }
+                        }
+                     }' ${IN} | sed 's/&nbsp;//g' >> ${OUT}
+echo "    ]" >> ${OUT}
+echo "  }"   >> ${OUT}
+echo "});"   >> ${OUT}
+
+exit 0
+
+
+
+
+
+
+
+

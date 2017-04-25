@@ -1,0 +1,47 @@
+body {
+    font-family: 'Oswald', sans-serif;
+    color: #666666;
+    background-color: #fbfcfc;
+}
+
+h1{
+    font-size: 3em;
+    margin-left: 1em;
+    padding-left: 1.25em;
+    background-image: url('../img/tools_icon.jpg');
+    -webkit-background-size: 1em;
+    background-size: 1em 1em;
+    background-repeat: no-repeat;
+    background-position: left center;
+}
+h2{ font-size: 2.5em; }
+h3{
+    font-size: 2em;
+    margin-left: 3em;
+    padding-left: 0.25em;
+    color: #666666;
+}
+h3 a{
+    color: #666666;
+}
+
+h3.blue{ border-left: #2980b9 solid 0.25em; }
+h3.blue a:hover{ color: #2980b9; }
+h3.green{ border-left: #27ae60 solid 0.25em; }
+h3.green a:hover{ color: #27ae60; }
+h3.yellow{ border-left: #f1c40f solid 0.25em; }
+h3.yellow a:hover{ color: #f1c40f; }
+h3.orange{ border-left: #e67e22 solid 0.25em; }
+h3.orange a:hover{ color: #e67e22; }
+h3.red{ border-left: #c0392b solid 0.25em; }
+h3.red a:hover{ color: #c0392b; }
+h3.purple{ border-left: #8e44ad solid 0.25em; }
+h3.purple a:hover{ color: #8e44ad; }
+
+h4{ font-size: 1.75em; }
+h5{ font-size: 1.5em; }
+h6{ font-size: 1.25em; }
+
+a{
+    text-decoration: none;
+}
